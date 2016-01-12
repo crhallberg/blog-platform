@@ -1,20 +1,7 @@
 var fs = require('fs'),
     marked = require('marked'),
-    moment = require('moment');
-    Client = require('ftp'),
+    moment = require('moment'),
     cheerio = require('cheerio');
-
-var c = new Client();
-c.on('ready', function() {
-  c.cwd('crhallberg.com/blog', function() {
-    c.put('./index.html', 'index.html', function() {
-      c.put('./archive.html', 'archive.html', function() {
-        console.log(' - uploaded');
-        c.end();
-      });
-    });
-  });
-});
 
 fs.readdir('./posts', function(err, files) {
   var promises = [];
@@ -36,15 +23,16 @@ fs.readdir('./posts', function(err, files) {
   // Print into files
   Promise.all(promises).then(function (posts) {
     console.log(' - compiled');
+    var name = 'Chris Hallberg';
     var header = '\
 <html><head>\
 <meta charset="utf-8">\
 <meta http-equiv="X-UA-Compatible" content="IE=edge">\
 <meta name="viewport" content="width=device-width, initial-scale=1">\
-<title>Chris Hallberg\'s Blog</title>\
+<title>'+name+'\'s Blog</title>\
 <link rel="stylesheet" href="./style.css"/>\
 <script src="./highlight.js"></script></head><body>\
-<a href="..">Chris Hallberg</a>\'s Blog<nav><a href="/blog">Home</a><a href="/blog/archive">Archive</a></nav><hr/>';
+<a href="..">'+name+'</a>\'s Blog<nav><a href="/blog">Home</a><a href="/blog/archive">Archive</a></nav><hr/>';
     var footer = '<script>highlight("pre")</script></body></html>';
     var body = posts.join('<hr/>');
     // Archive
@@ -64,13 +52,6 @@ fs.readdir('./posts', function(err, files) {
         fs.writeFile('archive.html', header + archive + footer, resolve);
         console.log(' - archive generated ('+$('h1').length+')');
       })
-    ]).then(function() {
-      // Push
-      c.connect({
-        host: "***REMOVED***",
-        user: "***REMOVED***",
-        password: "***REMOVED***"
-      });
-    });
+    ]);
   });
 });
