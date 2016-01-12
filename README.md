@@ -12,4 +12,4 @@ But most importantly, it's light. As light they come (while still looking this n
 
 ### Credits
 
-The design of this site (front and back end) were heavily inspired by [Maciej Ceglowski](https://twitter.com/baconmeteor)'s incredible [talk]() (53 minutes; [blog post](http://idlewords.com/talks/website_obesity.htm), if you prefer reading) and the platform [John Pavlick](https://twitter.com/angrysql) built in response: [hypertextual](http://hypertextual.herokuapp.com/).
+The design of this platform was heavily inspired by [Maciej Ceglowski](https://twitter.com/baconmeteor)'s incredible [talk]() (53 minutes; [blog post](http://idlewords.com/talks/website_obesity.htm), if you prefer reading) and the platform [John Pavlick](https://twitter.com/angrysql) built in response: [hypertextual](http://hypertextual.herokuapp.com/).
