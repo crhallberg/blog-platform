@@ -38,9 +38,14 @@ fs.readdir('./posts', function(err, files) {
     // Archive
     var $ = cheerio.load(body);
     var archive = '<h1>Archive</h1>';
+    var d = 0;
     $('h1').each(function(i, elem) {
       var title = $(elem);
-      archive += '<code>'+moment(files[i]).format('DD MMM YYYY')+'</code> &mdash; <a href="index.html#'+title.attr('id')+'">'+title.text()+'</a><br/>';
+      var date = moment(files[d++]);
+      while(d<files.length && date.isAfter()) {
+	date = moment(files[d++]);
+      }
+      archive += '<code>'+date.format('DD MMM YYYY')+'</code> &mdash; <a href="index.html#'+title.attr('id')+'">'+title.text()+'</a><br/>';
     });
     // Write files
     Promise.all([
