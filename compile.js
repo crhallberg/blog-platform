@@ -37,7 +37,7 @@ fs.readdir('./posts', function(err, files) {
     var body = posts.join('<hr/>');
     // Archive
     var $ = cheerio.load(body);
-    var archive = '<h1>Archive</h1>';
+    var archive = '<h2>Archive</h2>';
     var d = 0;
     $('h1').each(function(i, elem) {
       var title = $(elem);
