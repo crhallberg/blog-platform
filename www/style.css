@@ -72,6 +72,8 @@ blockquote {
   border-left: 4px solid #ddd;
 }
 img { max-width: 100%; }
+
+/* Responsive actions */
 @media (max-width: 767px) {
   html {font-size: 18px; }
   hr { margin: 2rem 0; }
