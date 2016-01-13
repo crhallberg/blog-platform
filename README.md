@@ -7,6 +7,9 @@ But most importantly, it's light. As light they come (while still looking this n
 1. `npm install`
 2. Write blog posts as Markdown files.
 3. Name those files by their release date and put them in posts/.
+  * posts/2016-01-06.md
+  * posts/2016-01-12.md
+  * posts/2017-01-01.md (future posts will be skipped)
 4. `node compile.js`
 5. Upload index.html and archive.html to your server along side the files in www/.
 
