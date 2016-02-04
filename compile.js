@@ -30,14 +30,12 @@ fs.readdir('./posts', function(err, files) {
 <meta http-equiv="X-UA-Compatible" content="IE=edge">\
 <meta name="viewport" content="width=device-width, initial-scale=1">\
 <title>'+name+'\'s Blog</title>\
-<link rel="stylesheet" href="./style.css"/>\
-<script src="./highlight.js"></script></head><body>\
+<link rel="stylesheet" href="/blog/style.css"/>\
+<script src="/blog/highlight.js"></script></head><body>\
 <a href="..">'+name+'</a>\'s Blog<nav><a href="/blog">Home</a><a href="/blog/archive">Archive</a></nav><hr/>';
     var footer = '<hr/><a href="/blog">Home</a><a href="/blog/archive">Archive</a><script>highlight("pre")</script></body></html>';
-    var body = posts.slice(0, 3).join('<hr/>');
-    var allposts = posts.join('<hr/>');
     // Archive
-    var $ = cheerio.load(body);
+    var $ = cheerio.load(posts.join(''));
     var archive = '<h2>Archive</h2>';
     var d = 0;
     $('h1').each(function(i, elem) {
@@ -54,7 +52,7 @@ fs.readdir('./posts', function(err, files) {
     // Write files
     Promise.all([
       new Promise(function(resolve, reject) {
-        fs.writeFile('index.html', header + body + footer, resolve);
+        fs.writeFile('index.html', header + posts.slice(0, 3).join('<hr/>') + footer, resolve);
         console.log(' - index generated');
       }),
       new Promise(function(resolve, reject) {
