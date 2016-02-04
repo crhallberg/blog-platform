@@ -33,8 +33,9 @@ fs.readdir('./posts', function(err, files) {
 <link rel="stylesheet" href="./style.css"/>\
 <script src="./highlight.js"></script></head><body>\
 <a href="..">'+name+'</a>\'s Blog<nav><a href="/blog">Home</a><a href="/blog/archive">Archive</a></nav><hr/>';
-    var footer = '<script>highlight("pre")</script></body></html>';
-    var body = posts.join('<hr/>');
+    var footer = '<hr/><a href="/blog">Home</a><a href="/blog/archive">Archive</a><script>highlight("pre")</script></body></html>';
+    var body = posts.slice(0, 3).join('<hr/>');
+    var allposts = posts.join('<hr/>');
     // Archive
     var $ = cheerio.load(body);
     var archive = '<h2>Archive</h2>';
@@ -45,7 +46,10 @@ fs.readdir('./posts', function(err, files) {
       while(d<files.length && date.isAfter()) {
 	date = moment(files[d++]);
       }
-      archive += '<code>'+date.format('DD MMM YYYY')+'</code> &mdash; <a href="index.html#'+title.attr('id')+'">'+title.text()+'</a><br/>';
+      var titleHash = title.text().toLowerCase().replace(/[^a-z0-9 ]/g, '').split(' ').slice(0, 3).join('-');
+      var url = 'pages/'+date.format('YYYY-MM-DD')+'-'+titleHash+'.html';
+      fs.writeFile(url, header + posts[i] + footer);
+      archive += '<code>'+date.format('DD MMM YYYY')+'</code> &mdash; <a href="'+url+'">'+title.text()+'</a><br/>';
     });
     // Write files
     Promise.all([
