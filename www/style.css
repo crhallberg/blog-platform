@@ -28,7 +28,7 @@ h2 { font-size: 2rem; }
 h3 { font-size: 1.5rem; }
 hr {
   display: block;
-  margin: 2rem -.6rem;
+  margin: 2rem -0.6rem 1.5rem;
 }
 p {
   margin-left: .25rem;
