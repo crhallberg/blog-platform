@@ -1,50 +1,17 @@
-@font-face{
-    font-family: 'Source Sans Pro';
-    font-weight: 400;
-    src: local('Source Sans Pro'),
-         url('./fonts/SourceSansPro-Regular.eot') format('embedded-opentype'),
-         url('./fonts/SourceSansPro-Regular.ttf.woff2') format('woff2'),
-         url('./fonts/SourceSansPro-Regular.otf.woff') format('woff'),
-         url('./fonts/SourceSansPro-Regular.otf') format('opentype'),
-         url('./fonts/SourceSansPro-Regular.ttf') format('truetype');
-}
-@font-face{
-    font-family: 'Source Sans Pro';
-    font-weight: 400;
-    font-style: italic;
-    src: local('Source Sans Pro'),
-         url('./fonts/SourceSansPro-It.eot') format('embedded-opentype'),
-         url('./fonts/SourceSansPro-It.ttf.woff2') format('woff2'),
-         url('./fonts/SourceSansPro-It.otf.woff') format('woff'),
-         url('./fonts/SourceSansPro-It.otf') format('opentype'),
-         url('./fonts/SourceSansPro-It.ttf') format('truetype');
-}
-@font-face{
-    font-family: 'Source Sans Pro';
-    font-weight: 700;
-    font-style: normal;
-    src: local('Source Sans Pro'),
-         url('./fonts/SourceSansPro-Bold.eot') format('embedded-opentype'),
-         url('./fonts/SourceSansPro-Bold.ttf.woff2') format('woff2'),
-         url('./fonts/SourceSansPro-Bold.otf.woff') format('woff'),
-         url('./fonts/SourceSansPro-Bold.otf') format('opentype'),
-         url('./fonts/SourceSansPro-Bold.ttf') format('truetype');
-}
-
 html { font-size: 16px; }
 body {
   width: 100%;
   max-width: 1000px;
   margin: 2rem auto;
-  padding: 0 .75rem;
-  font-family: "Source Sans Pro", Georgia;
+  padding: 0 .5rem;
+  /* Bootstrap native font stack */
+  /* https://github.com/twbs/bootstrap/pull/19098/files#diff-b312aea0dc66acbf9ed2a57f4aa03571R35 */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
   line-height: 1.2;
   word-wrap: break-word;
 }
-nav {
-  display: inline-table;
-  float: right;
-}
+nav { display: inline-table; }
+nav.right { float: right; }
 nav a {
   display: inline-block;
   padding-left: 1rem;
@@ -63,7 +30,11 @@ hr {
   display: block;
   margin: 2rem -.6rem;
 }
-hr + p { margin: 0 .25rem; }
+p {
+  margin-left: .25rem;
+  margin-right: .25rem;
+}
+hr + p { margin-bottom: 0; }
 
 blockquote {
   margin: 0;
@@ -72,10 +43,8 @@ blockquote {
   border-left: 4px solid #ddd;
 }
 img { max-width: 100%; }
-
-/* Responsive actions */
 @media (max-width: 767px) {
-  html {font-size: 18px; }
+  html { font-size: 18px; }
   hr { margin: 2rem 0; }
 }
 

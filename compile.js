@@ -32,8 +32,8 @@ fs.readdir('./posts', function(err, files) {
 <title>'+name+'\'s Blog</title>\
 <link rel="stylesheet" href="/blog/style.css"/>\
 <script src="/blog/highlight.js"></script></head><body>\
-<a href="..">'+name+'</a>\'s Blog<nav><a href="/blog">Home</a><a href="/blog/archive">Archive</a></nav><hr/>';
-    var footer = '<hr/><a href="/blog">Home</a> <a href="/blog/archive">Archive</a><script>highlight("pre")</script></body></html>';
+<a href="..">'+name+'</a>\'s Blog<nav class="right"><a href="/blog">Home</a><a href="/blog/archive">Archive</a></nav><hr/>';
+    var footer = '<hr/><nav><a href="/blog">Home</a> <a href="/blog/archive">Archive</a></nav><script>highlight("pre")</script></body></html>';
     // Archive
     var $ = cheerio.load(posts.join(''));
     var archive = '<h2>Archive</h2>';
