@@ -30,7 +30,7 @@ fs.readdir('./posts', function(err, files) {
 <meta http-equiv="X-UA-Compatible" content="IE=edge">\
 <meta name="viewport" content="width=device-width, initial-scale=1">\
 <title>'+name+'\'s Blog</title>\
-<link rel="stylesheet" href="/blog/style.css"/>\
+<link rel="stylesheet" href="/blog/style.min.css"/>\
 <script src="/blog/highlight.js"></script></head><body>\
 <a href="..">'+name+'</a>\'s Blog<nav class="right"><a href="/blog">Home</a><a href="/blog/archive">Archive</a></nav><hr/>';
     var footer = '<hr/><nav><a href="/blog">Home</a> <a href="/blog/archive">Archive</a></nav><script>highlight("pre")</script></body></html>';
@@ -42,23 +42,25 @@ fs.readdir('./posts', function(err, files) {
       var title = $(elem);
       var date = moment(files[d++]);
       while(d<files.length && date.isAfter()) {
-	date = moment(files[d++]);
+        date = moment(files[d++]);
       }
       var titleHash = title.text().toLowerCase().replace(/[^a-z0-9 ]/g, '').split(' ').slice(0, 3).join('-');
       var url = 'pages/'+date.format('YYYY-MM-DD')+'-'+titleHash+'.html';
-      fs.writeFile(url, header + posts[i] + footer);
+      fs.writeFile('www/' + url, header + posts[i] + footer);
       archive += '<code>'+date.format('DD MMM YYYY')+'</code> &mdash; <a href="'+url+'">'+title.text()+'</a><br/>';
     });
     // Write files
     Promise.all([
       new Promise(function(resolve, reject) {
-        fs.writeFile('index.html', header + posts.slice(0, 3).join('<hr/>') + footer, resolve);
+        fs.writeFile('www/index.html', header + posts.slice(0, 3).join('<hr/>') + footer, resolve);
         console.log(' - index generated');
       }),
       new Promise(function(resolve, reject) {
-        fs.writeFile('archive.html', header + archive + footer, resolve);
+        fs.writeFile('www/archive.html', header + archive + footer, resolve);
         console.log(' - archive generated ('+$('h1').length+')');
       })
-    ]);
+    ]).then(function() {
+      console.log(' - done!');
+    });
   });
 });
