@@ -48,32 +48,17 @@ img { max-width: 100%; }
   hr { margin: 2rem 0; }
 }
 
-/* Syntax highlighting */
 pre {
-  padding: .5rem;
-  border: 1px solid #ccc;
+  margin: 1rem 0;
+  padding-left: 1rem;
+  border-left: 1px solid #ccc;
   font-size: 85%;
-  background: #f8f8f8;
-  color: #333;
-  border-radius: 3px;
 }
-/* regexp */
-.f-1, .f-1 * {color:#009926;}
-/* string */
-.f1,.f1 * {color:#d14;}
-/* comment */
-.f2,.f2 * {color:#998;font-style:italic;}
-/* keyword */
-.f3,.f3 * {color:#000;font-weight: 700;}
-/* predefined object */
-.f4,.f4 * {color:#08B;}
-/* number */
-.f5,.f5 * {color:#099;}
-/* bracket, operator */
-.f6 {color:#000;}
 
 spoiler {
-  padding: 4px;
+  display: table;
+  margin: 1rem 0;
+  padding: .25rem;
   font-family: monospace;
   font-size: 85%;
   background: #000;
