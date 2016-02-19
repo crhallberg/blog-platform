@@ -3,6 +3,13 @@ var fs = require('fs'),
     moment = require('moment'),
     cheerio = require('cheerio');
 
+// Synchronous highlighting with highlight.js
+marked.setOptions({
+  highlight: function (code) {
+    return require('highlight.js').highlightAuto(code).value;
+  }
+});
+
 fs.readdir('./posts', function(err, files) {
   var promises = [];
   // Sort into date order
@@ -30,10 +37,9 @@ fs.readdir('./posts', function(err, files) {
 <meta http-equiv="X-UA-Compatible" content="IE=edge">\
 <meta name="viewport" content="width=device-width, initial-scale=1">\
 <title>'+name+'\'s Blog</title>\
-<link rel="stylesheet" href="/blog/style.min.css"/>\
-<script src="/blog/highlight.js"></script></head><body>\
-<a href="..">'+name+'</a>\'s Blog<nav class="right"><a href="/blog">Home</a><a href="/blog/archive">Archive</a></nav><hr/>';
-    var footer = '<hr/><nav><a href="/blog">Home</a> <a href="/blog/archive">Archive</a></nav><script>highlight("pre")</script></body></html>';
+<link rel="stylesheet" href="/blog/style.min.css"/></head>\
+<body><a href="..">'+name+'</a>\'s Blog<nav class="right"><a href="/blog">Home</a><a href="/blog/archive">Archive</a></nav><hr/>';
+    var footer = '<hr/><nav><a href="/blog">Home</a> <a href="/blog/archive">Archive</a></nav></body></html>';
     // Archive
     var $ = cheerio.load(posts.join(''));
     var archive = '<h2>Archive</h2>';
