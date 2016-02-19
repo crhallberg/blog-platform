@@ -8,7 +8,7 @@ module.exports = function(grunt) {
       },
       target: {
         files: {
-          'www/style.min.css': 'www/style.css'
+          'www/style.min.css': ['style.css','highlight-github.css']
         }
       }
     },
