@@ -40,8 +40,11 @@ blockquote {
   margin: 0;
   padding: .25rem;
   padding-left: 2rem;
-  color: #555;
   border-left: .5rem solid #ddd;
+  font-family: Georgia, "Times New Roman", Times, serif; /* native serif fonts */
+  font-style: italic;
+  line-height: 1.8;
+  color: #767676;
 }
 img { max-width: 100%; }
 @media (max-width: 767px) {
