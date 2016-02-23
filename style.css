@@ -2,12 +2,9 @@ html { font-size: 16px; }
 body {
   width: 100%;
   max-width: 1000px;
-  margin: 2rem auto;
+  margin: 1.5rem auto;
   padding: 0 .75rem;
-  /* Bootstrap native font stack */
-  /* https://github.com/twbs/bootstrap/pull/19098/files#diff-b312aea0dc66acbf9ed2a57f4aa03571R35 */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
-  line-height: 1.2;
+  color: #000;
   word-wrap: break-word;
 }
 nav { display: inline-table; }
@@ -21,7 +18,7 @@ h1, h2, h3 {
   margin: 1rem 0;
 }
 h1 {
-  margin: 0;
+  margin-top: 0;
   margin-left: -.25rem;
   font-size: 3rem;
 }
@@ -46,6 +43,8 @@ blockquote {
   line-height: 1.8;
   color: #767676;
 }
+blockquote * { margin: 0; }
+
 img { max-width: 100%; }
 @media (max-width: 767px) {
   html { font-size: 18px; }
@@ -63,7 +62,7 @@ pre {
 spoiler {
   display: table;
   margin: 1rem 0;
-  padding: .25rem;
+  padding: 0 .25rem;
   font-family: monospace;
   font-size: 85%;
   background: #000;
