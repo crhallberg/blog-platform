@@ -38,9 +38,10 @@ hr + p { margin-bottom: 0; }
 
 blockquote {
   margin: 0;
-  padding: 0 1rem;
+  padding: .25rem;
+  padding-left: 2rem;
   color: #555;
-  border-left: 4px solid #ddd;
+  border-left: .5rem solid #ddd;
 }
 img { max-width: 100%; }
 @media (max-width: 767px) {
@@ -50,8 +51,9 @@ img { max-width: 100%; }
 
 pre {
   margin: 1rem 0;
+  padding: .25rem;
   padding-left: 1rem;
-  border-left: 1px solid #ccc;
+  border-left: .25rem solid #ddd;
   font-size: 85%;
 }
 
